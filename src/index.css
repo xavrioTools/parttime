@@ -1,0 +1,97 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --color-butter-gold: #FFC72C;
+    --color-butter-highlight: #FFE57F;
+    --color-caviar-teal: #004D40;
+    --color-caviar-dark: #00332C;
+    --color-caviar-light: #00695C;
+    --color-neon-strawberry: #FF0055;
+    --color-neon-pink: #FF1493;
+    --color-obsidian: #1A1A1A;
+    --color-obsidian-surface: #242424;
+    --color-obsidian-border: #333333;
+  }
+}
+
+body {
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  overflow-x: hidden;
+  touch-action: manipulation;
+}
+
+/* Day Mode Theme Canvas and Layout */
+.theme-day {
+  background-color: #FFC72C;
+  color: #004D40;
+}
+
+/* Night Mode Theme Canvas and Layout */
+.theme-night {
+  background-color: #1A1A1A;
+  color: #F8F9FA;
+}
+
+/* Neon Glow Utilities for Night Mode */
+.neon-glow-red {
+  box-shadow: 0 0 15px rgba(255, 0, 85, 0.6), 0 0 30px rgba(255, 20, 147, 0.4);
+}
+
+.neon-border-red {
+  border-color: #FF0055;
+  box-shadow: 0 0 10px rgba(255, 0, 85, 0.4);
+}
+
+.neon-text-red {
+  color: #FF0055;
+  text-shadow: 0 0 12px rgba(255, 0, 85, 0.8), 0 0 24px rgba(255, 20, 147, 0.5);
+}
+
+/* Butter Glow Utilities for Day Mode */
+.butter-glow-gold {
+  box-shadow: 0 0 15px rgba(255, 199, 44, 0.6), 0 4px 12px rgba(0, 77, 64, 0.2);
+}
+
+/* High contrast badge typography */
+.item-badge-text {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
+}
+
+/* Prevent canvas blur on high-DPI screens */
+canvas {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Pulse animation for bombs */
+@keyframes bombPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 8px rgba(255, 0, 85, 0.7));
+  }
+  50% {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 20px rgba(255, 60, 0, 0.95));
+  }
+}
+
+.animate-bomb-pulse {
+  animation: bombPulse 0.8s ease-in-out infinite;
+}
+
+/* Flash screen animation */
+@keyframes screenFlash {
+  0% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+.flash-overlay {
+  animation: screenFlash 0.35s ease-out forwards;
+}
